@@ -1,0 +1,23 @@
+{
+    "name": "Mailgun",
+    "version": "1.0",
+    "author": [
+        "Tony Thomas"
+    ],
+    "url": "https://www.mediawiki.org/wiki/Extension:Mailgun",
+    "AutoloadClasses": {
+        "MailgunHooks": "MailgunHooks.php"
+    },
+    "Hooks": {
+        "AlternateUserMailer": [
+            "MailgunHooks::onAlternateUserMailer"
+        ]
+    },
+    "callback": "MailgunHooks::onRegistration",
+    "config": {
+        "MailgunAPIKey": "key-asdfasdfasdf",
+        "MailgunDomain": "example.in"
+    },
+    "manifest_version": 1
+
+}

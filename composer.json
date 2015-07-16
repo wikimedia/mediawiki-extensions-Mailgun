@@ -1,0 +1,8 @@
+{
+    "name": "mediawiki/mailgun",
+    "require": {
+        "mailgun/mailgun-php": "1.7.2"
+    },
+    "prepend-autoloader": false,
+    "optimize-autoloader": true
+}
