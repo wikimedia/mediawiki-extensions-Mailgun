@@ -1,31 +1,30 @@
 {
-    "name": "Mailgun",
-    "version": "1.0",
-    "author": [
-        "Tony Thomas",
-        "Alangi Derick"
-    ],
-    "url": "https://www.mediawiki.org/wiki/Extension:Mailgun",
-    "descriptionmsg": "mailgun-extension-desc",
-    "license-name": "GPL-2.0",
-    "AutoloadClasses": {
-        "MailgunHooks": "MailgunHooks.php"
-    },
-    "MessagesDirs": {
-        "Mailgun": [
-            "i18n"
-        ]
-    },
-    "Hooks": {
-        "AlternateUserMailer": [
-            "MailgunHooks::onAlternateUserMailer"
-        ]
-    },
-    "callback": "MailgunHooks::onRegistration",
-    "config": {
-        "MailgunAPIKey": "key-asdfasdfasdf",
-        "MailgunDomain": "example.in"
-    },
-    "manifest_version": 1
-
+	"name": "Mailgun",
+	"version": "1.0",
+	"author": [
+		"Tony Thomas",
+		"Alangi Derick"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Mailgun",
+	"descriptionmsg": "mailgun-extension-desc",
+	"license-name": "GPL-2.0",
+	"AutoloadClasses": {
+		"MailgunHooks": "MailgunHooks.php"
+	},
+	"MessagesDirs": {
+		"Mailgun": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"AlternateUserMailer": [
+			"MailgunHooks::onAlternateUserMailer"
+		]
+	},
+	"callback": "MailgunHooks::onRegistration",
+	"config": {
+		"MailgunAPIKey": "key-asdfasdfasdf",
+		"MailgunDomain": "example.in"
+	},
+	"manifest_version": 1
 }
