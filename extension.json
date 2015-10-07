@@ -6,7 +6,7 @@
 		"Alangi Derick"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:Mailgun",
-	"descriptionmsg": "mailgun-extension-desc",
+	"descriptionmsg": "mailgun-desc",
 	"license-name": "GPL-2.0",
 	"AutoloadClasses": {
 		"MailgunHooks": "MailgunHooks.php"
