@@ -21,7 +21,7 @@
 			"MailgunHooks::onAlternateUserMailer"
 		]
 	},
-	"callback": "MailgunHooks::onRegistration",
+	"load_composer_autoloader": true,
 	"config": {
 		"MailgunAPIKey": "key-asdfasdfasdf",
 		"MailgunDomain": "example.in"

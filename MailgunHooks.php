@@ -25,15 +25,6 @@
 
 class MailgunHooks {
 	/**
-	 * Function to be run on startup in $wgExtensionFunctions
-	 */
-	public static function onRegistration() {
-		if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-			require_once __DIR__ . '/vendor/autoload.php';
-		}
-	}
-
-	/**
 	 * Send a mail using Mailgun API
 	 *
 	 * @param array $headers
