@@ -38,7 +38,8 @@ class MailgunHooks {
 		array $headers, array $to, MailAddress $from, $subject, $body
 	) {
 		$conf = RequestContext::getMain()->getConfig();
-		$mailgunTransport = new \Mailgun\Mailgun( $conf->get( 'MailgunAPIKey' ) );
+		$client = new \Http\Adapter\Guzzle6\Client();
+		$mailgunTransport = new \Mailgun\Mailgun( $conf->get( 'MailgunAPIKey' ), $client );
 		$message = $mailgunTransport->BatchMessage( $conf->get( 'MailgunDomain' ) );
 
 		$message->setFromAddress( $from );
