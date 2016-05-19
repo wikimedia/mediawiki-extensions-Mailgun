@@ -45,10 +45,10 @@ class MailgunHooks {
 		$message->setFromAddress( $from );
 		$message->setSubject( $subject );
 		$message->setTextBody( $body );
+		$message->setReplyToAddress( $headers['Return-Path'] );
 
-		foreach( $headers as $headerName => $headerValue ) {
-			$message->addCustomHeader( $headerName, $headerValue );
-		}
+		$message->addCustomHeader( "X-Mailer", $headers['X-Mailer'] );
+		$message->addCustomHeader( "List-Unsubscribe", $headers['List-Unsubscribe'] );
 
 		foreach( $to as $recip ) {
 			try {
