@@ -33,14 +33,22 @@ class MailgunHooks {
 	 * @param string $subject
 	 * @param string $body
 	 * @return bool
+	 * @throws Exception
 	 */
 	public static function onAlternateUserMailer(
 		array $headers, array $to, MailAddress $from, $subject, $body
 	) {
 		$conf = RequestContext::getMain()->getConfig();
 		$client = new \Http\Adapter\Guzzle6\Client();
-		$mailgunTransport = new \Mailgun\Mailgun( $conf->get( 'MailgunAPIKey' ), $client );
-		$message = $mailgunTransport->BatchMessage( $conf->get( 'MailgunDomain' ) );
+
+		$mailgunAPIKey = $conf->get( 'MailgunAPIKey' );
+		$mailgunDomain = $conf->get( 'MailgunDomain' );
+		if ( $mailgunAPIKey == "" or $mailgunDomain == "" ) {
+			throw new MWException( "Please update your LocalSettings.php with the correct Mailgun API configurations" );
+		}
+
+		$mailgunTransport = new \Mailgun\Mailgun( $mailgunAPIKey, $client );
+		$message = $mailgunTransport->BatchMessage( $mailgunDomain );
 
 		$message->setFromAddress( $from );
 		$message->setSubject( $subject );
