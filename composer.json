@@ -9,7 +9,8 @@
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "0.9.2",
 		"phpunit/phpunit": "~4.6",
-		"php-http/guzzle6-adapter": "^1.0"
+		"php-http/guzzle6-adapter": "^1.0",
+		"jakub-onderka/php-console-highlighter": "0.3.2"
 	},
 	"scripts": {
 		"test": [
