@@ -36,7 +36,11 @@ class MailgunHooks {
 	 * @throws Exception
 	 */
 	public static function onAlternateUserMailer(
-		array $headers, array $to, MailAddress $from, $subject, $body
+		array $headers,
+		array $to,
+		MailAddress $from,
+		$subject,
+		$body
 	) {
 		$conf = RequestContext::getMain()->getConfig();
 		$client = new \Http\Adapter\Guzzle6\Client();
