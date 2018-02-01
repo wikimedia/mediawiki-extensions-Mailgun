@@ -19,7 +19,7 @@
  *
  * @file
  * @author Tony Thomas <01tonythomas@gmail.com>
- * @license GPL-2.0+
+ * @license GPL-2.0-or-later
  * @ingroup Extensions
 */
 
