@@ -52,6 +52,19 @@ class MailgunHooks {
 		}
 
 		$mailgunTransport = new \Mailgun\Mailgun( $mailgunAPIKey, $client );
+
+		return self::sendBatchMessage( $mailgunTransport, $mailgunDomain, $headers, $to, $from, $subject, $body );
+	}
+
+	public static function sendBatchMessage(
+		\Mailgun\Mailgun $mailgunTransport,
+		$mailgunDomain,
+		array $headers,
+		array $to,
+		MailAddress $from,
+		$subject,
+		$body
+	) {
 		$message = $mailgunTransport->BatchMessage( $mailgunDomain );
 
 		$message->setFromAddress( $from );
