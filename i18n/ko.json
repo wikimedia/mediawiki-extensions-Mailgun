@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Revi"
+			"Revi",
+			"Ykhwong"
 		]
 	},
-	"mailgun-desc": "미디어위키에서 메일건 API를 통해 메일을 발송합니다"
+	"mailgun-desc": "미디어위키의 Mailgun API를 통해 이메일을 보냅니다"
 }
