@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Thibaut120094"
 		]
 	},
-	"mailgun-desc": "Envoyer les courriels via l’API du service Mailgun de MédiaWiki"
+	"mailgun-desc": "Envoyer les courriels via l’API du service Mailgun de MediaWiki"
 }
