@@ -4,11 +4,11 @@
 		"mailgun/mailgun-php": "2.0",
 		"guzzlehttp/psr7": "~1.2",
 		"php-http/httplug": "^1.0",
-		"php-http/discovery": "^0.8"
+		"php-http/discovery": "^0.8",
+		"php-http/guzzle6-adapter": "^1.0"
 	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "1.0.0",
-		"php-http/guzzle6-adapter": "^1.0",
 		"jakub-onderka/php-console-highlighter": "0.3.2",
 		"mediawiki/minus-x": "0.3.1"
 	},
