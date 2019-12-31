@@ -64,7 +64,7 @@ class MailgunHooks {
 
 		foreach( $to as $recip ) {
 			try {
-				$message->addToRecipient( $recip );
+				$message->addToRecipient( $recip, [] );
 			} catch( Exception $e ) {
 				return $e->getMessage();
 			}
