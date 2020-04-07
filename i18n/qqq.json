@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tony Thomas",
-			"Alangi Derick"
+			"Alangi Derick",
+			"Tony Thomas"
 		]
 	},
 	"mailgun-desc": "{{desc|what=extension|name=Mailgun|url=https://www.mediawiki.org/wiki/Extension:Mailgun}}"
