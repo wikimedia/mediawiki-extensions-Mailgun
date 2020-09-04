@@ -21,7 +21,7 @@
  * @author Tony Thomas <01tonythomas@gmail.com>
  * @license GPL-2.0-or-later
  * @ingroup Extensions
-*/
+ */
 
 class MailgunHooks {
 	/**
@@ -47,7 +47,7 @@ class MailgunHooks {
 
 		$mailgunAPIKey = $conf->get( 'MailgunAPIKey' );
 		$mailgunDomain = $conf->get( 'MailgunDomain' );
-		if ( $mailgunAPIKey == "" or $mailgunDomain == "" ) {
+		if ( $mailgunAPIKey == "" || $mailgunDomain == "" ) {
 			throw new MWException( "Please update your LocalSettings.php with the correct Mailgun API configurations" );
 		}
 
@@ -62,10 +62,10 @@ class MailgunHooks {
 		$message->addCustomHeader( "X-Mailer", $headers['X-Mailer'] );
 		$message->addCustomHeader( "List-Unsubscribe", $headers['List-Unsubscribe'] );
 
-		foreach( $to as $recip ) {
+		foreach ( $to as $recip ) {
 			try {
 				$message->addToRecipient( $recip, [] );
-			} catch( Exception $e ) {
+			} catch ( Exception $e ) {
 				return $e->getMessage();
 			}
 		}
