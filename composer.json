@@ -17,12 +17,13 @@
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
 			"minus-x check .",
-			"phpcs -p -s"
+			"@phpcs"
 		],
 		"fix": [
 			"minus-x fix .",
 			"phpcbf"
-		]
+		],
+		"phpcs": "phpcs -sp --cache"
 	},
 	"prepend-autoloader": false,
 	"optimize-autoloader": true
