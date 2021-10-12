@@ -43,7 +43,6 @@ class MailgunHooks {
 		$body
 	) {
 		$conf = RequestContext::getMain()->getConfig();
-		$client = new \Http\Adapter\Guzzle6\Client();
 
 		$mailgunAPIKey = $conf->get( 'MailgunAPIKey' );
 		$mailgunDomain = $conf->get( 'MailgunDomain' );
@@ -51,11 +50,27 @@ class MailgunHooks {
 			throw new MWException( "Please update your LocalSettings.php with the correct Mailgun API configurations" );
 		}
 
-		$mailgunTransport = new \Mailgun\Mailgun( $mailgunAPIKey, $client );
+		$mailgunConfigurator = new \Mailgun\HttpClient\HttpClientConfigurator();
+		$mailgunConfigurator->setApiKey( $mailgunAPIKey );
+
+		$mailgunTransport = new \Mailgun\Mailgun( $mailgunConfigurator );
 
 		return self::sendBatchMessage( $mailgunTransport, $mailgunDomain, $headers, $to, $from, $subject, $body );
 	}
 
+	/**
+	 * Submit a batch message using Mailgun API
+	 *
+	 * @param \Mailgun\Mailgun $mailgunTransport
+	 * @param string $mailgunDomain
+	 * @param array $headers
+	 * @param array $to
+	 * @param MailAddress $from
+	 * @param string $subject
+	 * @param string $body
+	 * @return false|string
+	 * @throws Exception
+	 */
 	public static function sendBatchMessage(
 		\Mailgun\Mailgun $mailgunTransport,
 		$mailgunDomain,
@@ -65,15 +80,23 @@ class MailgunHooks {
 		$subject,
 		$body
 	) {
-		$message = $mailgunTransport->BatchMessage( $mailgunDomain );
+		$message = $mailgunTransport->messages()->getBatchMessage( $mailgunDomain );
 
 		$message->setFromAddress( $from );
 		$message->setSubject( $subject );
 		$message->setTextBody( $body );
-		$message->setReplyToAddress( $headers['Return-Path'] );
 
-		$message->addCustomHeader( "X-Mailer", $headers['X-Mailer'] );
-		$message->addCustomHeader( "List-Unsubscribe", $headers['List-Unsubscribe'] );
+		if ( isset( $headers['Return-Path'] ) ) {
+			$message->setReplyToAddress( $headers['Return-Path'] );
+		}
+
+		if ( isset( $headers['X-Mailer'] ) ) {
+			$message->addCustomHeader( "X-Mailer", $headers['X-Mailer'] );
+		}
+
+		if ( isset( $headers['List-Unsubscribe'] ) ) {
+			$message->addCustomHeader( "List-Unsubscribe", $headers['List-Unsubscribe'] );
+		}
 
 		foreach ( $to as $recip ) {
 			try {
