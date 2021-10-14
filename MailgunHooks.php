@@ -46,12 +46,22 @@ class MailgunHooks {
 
 		$mailgunAPIKey = $conf->get( 'MailgunAPIKey' );
 		$mailgunDomain = $conf->get( 'MailgunDomain' );
+
+		$mailgunEndpoint = "";
+		if ( $conf->has( 'MailgunEndpoint' ) ) {
+			$mailgunEndpoint = $conf->get( 'MailgunEndpoint' );
+		}
+
 		if ( $mailgunAPIKey == "" || $mailgunDomain == "" ) {
 			throw new MWException( "Please update your LocalSettings.php with the correct Mailgun API configurations" );
 		}
 
 		$mailgunConfigurator = new \Mailgun\HttpClient\HttpClientConfigurator();
 		$mailgunConfigurator->setApiKey( $mailgunAPIKey );
+
+		if ( !empty( $mailgunEndpoint ) ) {
+			$mailgunConfigurator->setEndpoint( $mailgunEndpoint );
+		}
 
 		$mailgunTransport = new \Mailgun\Mailgun( $mailgunConfigurator );
 
