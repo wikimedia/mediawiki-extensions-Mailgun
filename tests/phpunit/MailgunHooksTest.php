@@ -7,7 +7,7 @@
  * @license GPL-2.0-or-later
  */
 
-class MailgunHooksTest extends MediaWikiTestCase {
+class MailgunHooksTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * Test that onAlternateUserMailer throws Exception if api key is missing.
 	 * @covers MailgunHooks::onAlternateUserMailer
