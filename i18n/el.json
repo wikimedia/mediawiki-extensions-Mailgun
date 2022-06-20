@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"NikosLikomitros"
 		]
 	},
-	"mailgun-desc": "Στέλνει μηνύματα ηλεκτρονικού ταχυδρομείου μέσω της υπηρεσίας Mailgun API από το Mediawiki"
+	"mailgun-desc": "Στέλνει μηνύματα ηλεκτρονικού ταχυδρομείου μέσω της υπηρεσίας Mailgun API από το MediaWiki"
 }
