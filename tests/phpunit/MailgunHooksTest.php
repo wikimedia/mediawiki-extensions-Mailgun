@@ -109,12 +109,18 @@ class MailgunHooksTest extends MediaWikiIntegrationTestCase {
 		$batchMessage->expects( $this->once() )
 				->method( 'setReplyToAddress' )
 				->with( $this->equalTo( 'Return-Path-value' ) );
+		$expectedHeaders = [
+			'X-Mailer' => 'X-Mailer-value',
+			'List-Unsubscribe' => 'List-Unsubscribe-value'
+		];
 		$batchMessage->expects( $this->exactly( 2 ) )
 				->method( 'addCustomHeader' )
-				->withConsecutive(
-					[ 'X-Mailer', 'X-Mailer-value' ],
-					[ 'List-Unsubscribe', 'List-Unsubscribe-value' ]
-				);
+				->willReturnCallback( function ( $headerName, $headerVal ) use ( $batchMessage, &$expectedHeaders ) {
+					$this->assertArrayHasKey( $headerName, $expectedHeaders );
+					$this->assertSame( $expectedHeaders[$headerName], $headerVal );
+					unset( $expectedHeaders[$headerName] );
+					return $batchMessage;
+				} );
 		$batchMessage->expects( $this->once() )
 				->method( 'addToRecipient' )
 				->with( $this->equalTo( 'receiver@example.com' ) );
