@@ -91,24 +91,24 @@ class MailgunHooksTest extends MediaWikiIntegrationTestCase {
 				->getMock();
 
 		$mock->expects( $this->once() )->method( 'messages' )
-		->will( $this->returnValue( $message ) );
+		->willReturn( $message );
 
 		$message->expects( $this->once() )->method( 'getBatchMessage' )
-				->with( $this->equalTo( 'example.com' ) )
-				->will( $this->returnValue( $batchMessage ) );
+				->with( 'example.com' )
+				->willReturn( $batchMessage );
 
 		$batchMessage->expects( $this->once() )
 				->method( 'setFromAddress' )
-				->with( $this->equalTo( 'sender@example.com' ) );
+				->with( 'sender@example.com' );
 		$batchMessage->expects( $this->once() )
 				->method( 'setSubject' )
-				->with( $this->equalTo( 'Some subject' ) );
+				->with( 'Some subject' );
 		$batchMessage->expects( $this->once() )
 				->method( 'setTextBody' )
-				->with( $this->equalTo( 'Email body' ) );
+				->with( 'Email body' );
 		$batchMessage->expects( $this->once() )
 				->method( 'setReplyToAddress' )
-				->with( $this->equalTo( 'Return-Path-value' ) );
+				->with( 'Return-Path-value' );
 		$expectedHeaders = [
 			'X-Mailer' => 'X-Mailer-value',
 			'List-Unsubscribe' => 'List-Unsubscribe-value'
@@ -123,7 +123,7 @@ class MailgunHooksTest extends MediaWikiIntegrationTestCase {
 				} );
 		$batchMessage->expects( $this->once() )
 				->method( 'addToRecipient' )
-				->with( $this->equalTo( 'receiver@example.com' ) );
+				->with( 'receiver@example.com' );
 		$batchMessage->expects( $this->once() )
 				->method( 'finalize' );
 
